@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login - GestureConnect</title>
+    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+    <script>
+        // Redirect to home if already logged in
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("loggedIn") === "true") {
+                window.location.href = "{% url 'home' %}";
+            }
+        });
+
+        function login(event) {
+            event.preventDefault(); // Prevent form submission
+            let email = document.getElementById("login-email").value;
+            let password = document.getElementById("login-password").value;
+
+            if (email && password) {
+                localStorage.setItem("loggedIn", "true"); // Set login status
+                window.location.href = "{% url 'home' %}"; // Redirect to home
+            } else {
+                alert("Please enter valid credentials!");
+            }
+        }
+
+        function signup(event) {
+            event.preventDefault(); // Prevent form submission
+            let email = document.getElementById("signup-email").value;
+            let password = document.getElementById("signup-password").value;
+            let confirmPassword = document.getElementById("signup-confirm-password").value;
+
+            if (email && password && password === confirmPassword) {
+                localStorage.setItem("loggedIn", "true"); // Set login status
+                window.location.href = "{% url 'home' %}"; // Redirect to home
+            } else {
+                alert("Please enter valid details and make sure passwords match!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">Login Form</div>
+            <div class="title signup">Signup Form</div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+                <form class="login" onsubmit="login(event)">
+                    <div class="field">
+                        <input type="text" id="login-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <div class="pass-link"><a href="#">Forgot password?</a></div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+                </form>
+                <form class="signup" onsubmit="signup(event)">
+                    <div class="field">
+                        <input type="text" id="signup-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm password" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

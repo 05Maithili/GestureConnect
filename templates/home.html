@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestureConnect</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script>
+        // Redirect to login if not logged in
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("loggedIn") !== "true") {
+                window.location.href = "{% url 'signup_signin' %}";
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("loggedIn"); // Clear login status
+            window.location.href = "{% url 'signup_signin' %}"; // Redirect to login page
+        }
+    </script>  
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="{% static 'media/logo.jpg' %} "alt="GestureConnect Logo ">
+            <h1>GestureConnect</h1>
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Select a Module</h2>
+        <div class="modules">
+            <div class="module" onclick="openModule('sign_to_text.html')">
+                <a href="sign_to_text" target="_blank"><img src="{% static 'sign-to-text.png' %}" alt="Sign to Text">
+                <p>Sign to Text</p>
+            </div>
+            <div class="module" onclick="openModule('sign_to_speech.html')">
+                <a href="sign_to_speech" target="_blank"><img src="{% static 'sign-to-speech.png' %}" alt="Sign to Speech"></a>
+                <p>Sign to Speech</p>
+            </div>
+            <div class="module" onclick="openModule('text_to_speech.html')">
+                <a href="text_to_speech" target="_blank"><img src="{% static 'text-to-speech.png' %}" alt="Text to Speech"></a>
+                <p>Text to Speech</p>
+            </div>
+            <div class="module" onclick="openModule('speech_to_text.html')">
+                <a href="speech_to_text" target="_blank"><img src="{% static 'speech-to-text.png' %}" alt="Speech to Text"></a>
+                <p>Speech to Text</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

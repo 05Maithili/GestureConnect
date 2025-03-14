@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign to Speech</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #00c6ff;
+        }
+        .container {
+            margin: 50px auto;
+            width: 60%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            background: white;
+            color: #007bff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: #00c6ff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+
+        <a href="#">Help</a>
+    </nav>
+
+    <div class="container">
+        <h1>Sign to Speech</h1>
+        <p>Convert sign language gestures into spoken words using our advanced AI-based detection system.</p>
+        <p>Spoken Output: <strong>{{ spoken_text }}</strong></p>
+        <button class="button" onclick="startDetection()">Start Detection</button>
+    </div>
+
+    <script>
+        function startDetection() {
+            alert("Sign Detection Started!");
+        }
+    </script>
+
+</body>
+</html>

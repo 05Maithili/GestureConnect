@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign to Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #00c6ff;
+        }
+        .container {
+            margin: 50px auto;
+            width: 60%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        video {
+            width: 80%;
+            height: auto;
+            border: 3px solid #007bff;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .output-box {
+            width: 80%;
+            height: 100px;
+            border: 2px solid #007bff;
+            padding: 10px;
+            font-size: 18px;
+            margin: 20px auto;
+            background: #eef5ff;
+            border-radius: 5px;
+            overflow-y: auto;
+        }
+        .button {
+            background: white;
+            color: #007bff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: #00c6ff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">Help</a>
+    </nav>
+
+    <div class="container">
+        <h1>Sign to Text</h1>
+        <p>Convert sign language gestures into written text.</p>
+        <button class="button" onclick="startDetection()">Start Detection</button>
+        <p id="output">Detected text will appear here.</p>
+        <p>Detected Gesture: <strong>{{ recognized_text }}</strong></p>
+        <video id="video" autoplay></video>
+        <div class="output-box" id="output" contenteditable="true">Detected text will appear here...</div>
+    </div>
+
+    <script>
+        function startCamera() {
+            let video = document.getElementById('video');
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                })
+                .catch(error => {
+                    console.error("Error accessing camera:", error);
+                    document.getElementById("output").innerText = "Camera access denied.";
+                });
+        }
+    </script>
+
+</body>
+</html>
