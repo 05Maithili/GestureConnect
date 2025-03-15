@@ -57,17 +57,19 @@
 
     <nav>
         <a href="{% url 'home' %}">Home</a>
-
-        <a href="#">Help</a>
+        <a href="{% url 'help' %}">Help</a>
+         <a href="{% url 'about' %}">About</a> 
+         <a href="{% url 'contact' %}">Contact Us</a> 
+         <a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a> 
     </nav>
 
     <div class="container">
         <h1>Text to Speech</h1>
         <p>Convert written text into natural-sounding speech.</p>
-        <audio controls>
+        {% comment %} <audio controls>
             <source src="{% static 'speech.mp3' %}" type="audio/mpeg">
             Your browser does not support the audio element.
-        </audio>
+        </audio> {% endcomment %}
         <textarea id="textInput" placeholder="Enter text here..."></textarea>
         <button class="button" onclick="speakText()">Speak</button>
     </div>
