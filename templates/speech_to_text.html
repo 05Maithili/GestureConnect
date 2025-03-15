@@ -46,6 +46,7 @@
             background: #eef5ff;
             border-radius: 5px;
             overflow-y: auto;
+            color:black;
         }
         .button {
             background: white;
@@ -68,8 +69,10 @@
     <nav>
         {% comment %} <a href="home.html">Home</a> {% endcomment %}
         <a href="{% url 'home' %}">Home</a>
-
-        <a href="#">Help</a>
+        <a href="{% url 'help' %}">Help</a>
+         <a href="{% url 'about' %}">About</a> 
+         <a href="{% url 'contact' %}">Contact Us</a> 
+         <a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a> 
     </nav>
 
     <div class="container">
