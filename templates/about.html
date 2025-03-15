@@ -1,0 +1,262 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - GestureConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background:#d9eafc;
+             
+        }
+        h1{
+            color:#f1f1f1
+        }
+        nav {
+            background: -webkit-linear-gradient(left,#003366,#004080,#0059b3
+            , #0073e6);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        
+        ul li a:hover {
+            background: white;
+            color: -webkit-linear-gradient(right,#003366,#004080,#0059b3
+            , #0073e6);
+        }
+          
+        .about-container {
+            /* padding: 50px;
+            background-color: #f1f1f1;*/
+            position: relative;
+            padding: 50px;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .about-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .about-content {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .features-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .feature {
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+            border: 2px solid #003366;
+        }
+        .feature:hover {
+            transform: scale(1.05);
+            background: #e3e3e3;
+        }
+        .feature-box {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .team-container {
+            background-color: #f1f1f1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .team-member {
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s;
+            text-align: center;
+            border: 2px solid #003366;
+        }
+        .team-member:hover {
+            transform: scale(1.05);
+            background: #e3e3e3;
+        }
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .about-headings {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .about-headings h2 {
+            display: block;
+            background:  rgba(57, 113, 198, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+            width: fit-content;
+            text-align: left;
+            margin: 10px 0;
+        }
+        .about-headings h2:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+        .about-text {
+            padding-left: 20px;
+            max-width: 600px;
+        }
+        footer {
+            background: -webkit-linear-gradient(left,#003366,#004080,#0059b3
+            , #0073e6);
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="{% static 'media/logo.jpg' %}" alt="GestureConnect Logo">
+            <h1>GestureConnect</h1>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a> </li>
+            <li><a href="{% url 'about' %}" class="active">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-container">
+        <!-- <video autoplay muted loop>
+            <source src="media/back3.mp4" type="video/mp4">
+        </video> -->
+        <div class="about-headings">
+            <h2>About GestureConnect</h2>
+        </div>
+        <div class="about-text">
+            <p>GestureConnect is an innovative platform that bridges the gap between sign language users and non-sign language users. Our system converts gestures into text and speech, making communication more accessible and inclusive.</p>
+        </div>
+        <div class="about-headings"> 
+        <h2>Our Vision</h2>
+        </div>
+        <div class="about-text"> 
+        <p>At Gesture Connect, we envision a world where language is no longer a barrier to understanding. Through cutting-edge technology and thoughtful design, we aim to create a platform that fosters equity, inclusivity, and innovation in communication.</p>
+        </div>
+        <div class="about-headings"> 
+        <h2>Who We Serve</h2>
+        </div>
+        <div class="about-text"> 
+        <p>Gesture Connect is designed for individuals who communicate through sign language, as well as their families, friends, and colleagues. It is also a valuable tool for educators, interpreters, and businesses striving to create an inclusive environment for everyone.</p>
+        </div>
+        <div class="about-headings"> 
+        <h2>Technology Behind Gesture Connect</h2>
+        </div>
+        <div class="about-text"> 
+        <p>Our platform harnesses the power of advanced machine learning, artificial intelligence, and computer vision technologies to ensure accurate and reliable translations across all our features. The system is continuously learning and improving to meet diverse linguistic and cultural needs.</p>
+        </div>
+    </section>
+
+
+    <section class="features-container">
+        <div class="about-headings">
+        <h2>Key Features</h2>
+        </div> 
+        <div class="features-list">
+            <div class="feature"><h3>Sign to Text</h3><div class="feature-box">Converts sign language gestures into readable text in real-time.</div></div>
+            <div class="feature"><h3>Sign to Speech</h3><div class="feature-box">Transforms sign language gestures into spoken words for effective communication.</div></div>
+            <div class="feature"><h3>Speech to Text</h3><div class="feature-box">Captures spoken words and converts them into written text instantly.</div></div>
+            <div class="feature"><h3>Text to Speech</h3><div class="feature-box">Reads out typed text using a natural-sounding voice.</div></div>
+            <div class="feature"><h3>User-Friendly Interface</h3><div class="feature-box">Simple, intuitive, and accessible design for all users.</div></div>
+            <div class="feature"><h3>Real-Time Processing</h3><div class="feature-box">Fast and accurate recognition for seamless communication.</div></div>
+        </div>
+    </section>
+
+    <section class="team-container">
+        <div class="about-headings">
+        <h2>Meet the Team</h2>
+        </div>
+        <div class="team-members">
+            <div class="team-member"><img src="{% static 'media/member1.jpg' %}" alt="Team Member 1"><h3>Member 1</h3><p>Role and brief description.</p></div>
+            <div class="team-member"><img src="{% static 'media/member2.jpg' %}" alt="Team Member 2"><h3>Member 2</h3><p>Role and brief description.</p></div>
+            <div class="team-member"><img src="{% static 'media/member3.jpg' %}"alt="Team Member 3"><h3>Member 3</h3><p>Role and brief description.</p></div>
+            <div class="team-member"><img src="{% static 'media/member4.jpg' %}" alt="Team Member 4"><h3>Member 4</h3><p>Role and brief description.</p></div>
+            <div class="team-member"><img src="{% static 'media/member5.jpg' %}" alt="Team Member 5"><h3>Member 5</h3><p>Role and brief description.</p></div>
+            <div class="team-member"><img src="{% static 'media/member6.jpg' %}" alt="Team Member 6"><h3>Member 6</h3><p>Role and brief description.</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 GestureConnect. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
