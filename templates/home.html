@@ -1,4 +1,4 @@
-{% load static %}
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,35 +29,187 @@
             <h1>GestureConnect</h1>
         </div>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
+        <video autoplay loop muted plays-inline class="bg-video">
+            <source src="{% static 'media/back1.mp4' %}" type="video/mp4">
+        </video>
         <h2>Select a Module</h2>
         <div class="modules">
             <div class="module" onclick="openModule('sign_to_text.html')">
-                <a href="sign_to_text" target="_blank"><img src="{% static 'sign-to-text.png' %}" alt="Sign to Text">
+                <a href="  sign_to_text " target="_blank"><img src="{% static 'media/sign_to_text.jpg' %}" alt="Sign to Text">
                 <p>Sign to Text</p>
             </div>
             <div class="module" onclick="openModule('sign_to_speech.html')">
-                <a href="sign_to_speech" target="_blank"><img src="{% static 'sign-to-speech.png' %}" alt="Sign to Speech"></a>
+                <a href="  sign_to_speech " target="_blank"><img src="{% static 'media/sign_to_speech.jpg' %}" alt="Sign to Speech"></a>
                 <p>Sign to Speech</p>
             </div>
             <div class="module" onclick="openModule('text_to_speech.html')">
-                <a href="text_to_speech" target="_blank"><img src="{% static 'text-to-speech.png' %}" alt="Text to Speech"></a>
+                <a href="text_to_speech" target="_blank"><img src="{% static 'media/text_to_speech.png' %}" alt="Text to Speech"></a>
                 <p>Text to Speech</p>
             </div>
             <div class="module" onclick="openModule('speech_to_text.html')">
-                <a href="speech_to_text" target="_blank"><img src="{% static 'speech-to-text.png' %}" alt="Speech to Text"></a>
+                <a href="speech_to_text" target="_blank"><img src="{% static 'media/speech_to_text.png' %}" alt="Speech to Text"></a>
                 <p>Speech to Text</p>
             </div>
         </div>
     </div>
 
+</body>
+</html> {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestureConnect</title>
+    <script>
+        // Redirect to login if not logged in
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("loggedIn") !== "true") {
+                window.location.href = "{% url 'signup_signin' %}";
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("loggedIn"); // Clear login status
+            window.location.href = "{% url 'signup_signin' %}"; // Redirect to login page
+        }
+    </script>  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right,#003366,#004080,#0059b3, #0073e6);
+            padding: 15px 30px;
+            color: white;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            display: inline;
+        }
+        ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        ul li a:hover {
+            background: linear-gradient(to right,#003366,#004080,#0059b3, #0073e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .container {
+            text-align: center;
+            margin: 50px auto;
+        }
+        .modules {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .module {
+            background: rgba(57, 113, 198, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 200px;
+            text-align: center;
+        }
+        .module img {
+            width: 80px;
+            height: 80px;
+        }
+        .module p {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .module:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .bg-video {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{% static 'media/logo.jpg' %}" alt="GestureConnect Logo">
+            <h1>GestureConnect</h1>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <video autoplay loop muted playsinline class="bg-video">
+            <source src="{% static 'media/back1.mp4' %}" type="video/mp4">
+        </video>
+         
+        <h2>Select a Module</h2>
+        <div class="modules">
+            <div class="module" onclick="openModule('sign_to_text.html')">
+                <a href="  sign_to_text " target="_blank"><img src="{% static 'media/sign_to_text.jpg' %}" alt="Sign to Text">
+                <p>Sign to Text</p>
+            </div>
+            <div class="module" onclick="openModule('sign_to_speech.html')">
+                <a href="  sign_to_speech " target="_blank"><img src="{% static 'media/sign_to_speech.jpg' %}" alt="Sign to Speech"></a>
+                <p>Sign to Speech</p>
+            </div>
+            <div class="module" onclick="openModule('text_to_speech.html')">
+                <a href="text_to_speech" target="_blank"><img src="{% static 'media/text_to_speech.png' %}" alt="Text to Speech"></a>
+                <p>Text to Speech</p>
+            </div>
+            <div class="module" onclick="openModule('speech_to_text.html')">
+                <a href="speech_to_text" target="_blank"><img src="{% static 'media/speech_to_text.png' %}" alt="Speech to Text"></a>
+                <p>Speech to Text</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
