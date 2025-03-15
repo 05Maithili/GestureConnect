@@ -55,9 +55,12 @@
 <body>
 
     <nav>
+         
         <a href="{% url 'home' %}">Home</a>
-
-        <a href="#">Help</a>
+        <a href="{% url 'help' %}">Help</a>
+         <a href="{% url 'about' %}">About</a> 
+         <a href="{% url 'contact' %}">Contact Us</a> 
+         <a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a> 
     </nav>
 
     <div class="container">
