@@ -102,7 +102,8 @@ def speech_to_text(request):
         print("Listening... Speak now!")
         try:
             recognizer.adjust_for_ambient_noise(source)  # Adjust for background noise
-            audio = recognizer.listen(source, timeout=5)  # Listen for speech
+            audio = recognizer.listen(source)  # No timeout
+  # Listen for speech
             detected_text = recognizer.recognize_google(audio)  # Convert speech to text using Google API
         except sr.UnknownValueError:
             detected_text = "Sorry, could not understand the audio."
@@ -113,3 +114,12 @@ def speech_to_text(request):
 
 def signup_signin(request):
     return render(request,'signup_signin.html')
+
+def about(request):
+    return render(request,'about.html')
+
+def help(request):
+    return render(request,'help.html')
+
+def contact(request):
+    return render(request,'contact.html')
