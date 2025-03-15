@@ -10,8 +10,8 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
-, #0073e6);
+  /* background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
+, #0073e6); */
 }
 ::selection{
   background: #1a75ff;
@@ -182,4 +182,23 @@ form .btn input[type="submit"]{
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+}
+.bg-video{
+  position:absolute;
+  right:0;
+  bottom:0;
+  z-index: -1;
+}
+@media (min-aspect-ratio: 16/9){
+    .bg-video{
+      width: 100%;
+      height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9){
+  .bg-video{
+    width: auto;
+    height: 100%;
+  }
 }
