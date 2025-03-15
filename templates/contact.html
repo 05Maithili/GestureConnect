@@ -1,0 +1,154 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - GestureConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #d9eafc;
+        }
+        nav {
+            background: -webkit-linear-gradient(left,#003366,#004080,#0059b3, #0073e6);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        h2{
+            color:white;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            background: white;
+            color: #0059b3;
+        }
+        .contact-container {
+            padding: 50px;
+        }
+        .contact-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 20px auto;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .contact-box:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #003366;
+            border-radius: 5px;
+        }
+        button {
+            background: #0073e6;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0059b3;
+        }
+        footer {
+            background: -webkit-linear-gradient(left,#003366,#004080,#0059b3, #0073e6);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{% static 'media/logo.jpg' %}" alt="GestureConnect Logo">
+            <h1>GestureConnect</h1>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'help' %}">Help</a></li>
+            <li><a href="{% url 'contact' %}" class="active">Contact Us</a></li>
+            <li><a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-box">
+            <p>Have questions or need support? Fill out the form below, and our team will get back to you as soon as possible.</p>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <button class="back-button" onclick="goBack()">Back</button>
+    </section>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script> 
+    <footer>
+        <p>&copy; 2025 GestureConnect. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

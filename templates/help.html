@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - GestureConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #d9eafc;
+        }
+        nav {
+            background: -webkit-linear-gradient(left,#003366,#004080,#0059b3, #0073e6);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        h2{
+            color:#f1f1f1
+        }
+        nav ul li a:hover {
+            background: white;
+            color: #0059b3;
+        }
+        .help-container {
+            padding: 50px;
+        }
+        .help-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin: 20px auto;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .help-box:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 1);
+        }
+        footer {
+            background: -webkit-linear-gradient(left,#003366,#004080,#0059b3, #0073e6);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        button {
+            background: #0073e6;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0059b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{% static 'media/logo.jpg' %}" alt="GestureConnect Logo">
+            <h1>GestureConnect</h1>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'help' %}">Help</a></li>
+            <li><a href="{% url 'contact' %}" class="active">Contact Us</a></li>
+            <li><a href="{% url 'signup_signin' %}" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="help-container">
+        <h2>How to Use GestureConnect</h2>
+        
+        <div class="help-box">
+            <h3>Sign to Text</h3>
+            <p>Click on 'Sign to Text' to open the camera. Perform sign language gestures, and the system will convert them into text in real-time.</p>
+        </div>
+        
+        <div class="help-box">
+            <h3>Sign to Speech</h3>
+            <p>Click 'Start' to activate the sign recognition system. Once a gesture is detected, the system will convert it into audible speech.</p>
+        </div>
+        
+        <div class="help-box">
+            <h3>Speech to Text</h3>
+            <p>Press the 'Start Listening' button and speak into the microphone. The spoken words will be transcribed into text in a text box.</p>
+        </div>
+        
+        <div class="help-box">
+            <h3>Text to Speech</h3>
+            <p>Enter text into the provided box and press 'Play'. The system will read out the text in a natural-sounding voice.</p>
+        </div>
+    </section>
+    <button class="back-button" onclick="goBack()">Back</button>
+    </section>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 GestureConnect. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
